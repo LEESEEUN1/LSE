@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+<script>
+
+	window.addEventListener("load", function(e) {
+
+		var p1 = document.getElementById("p1");
+		var runButton = document.getElementById("run-button");
+		
+		runButton.onclick = function() {
+			//var inputs = p1.getElementsByTagName("input");
+			//inputs[0].value = "오켕";
+			//inputs[1].value = "오키";
+			
+			/* var input=document.querySelector("#p1>input:first-child");
+			input.value="오켕"; */
+			
+			var inputs=document.querySelectorAll("#p1>input");
+			inputs[0].value="오켕";
+			inputs[1].value="오ee켕";
+			//querySelector은 결과가 하나만 나옴
+			//querySelectorAll은 모든 것이 바뀜
+			
+		};
+
+	});
+     
+
+	/*----------------------------------------------------------*/
+	//id를 부여해야 할 녀석과 아닌 녀석
+	//(p에 id를 넣었다면 방이거나 가구이거나, (레이아웃, 모듈))
+	//<노드객체선택하기>
+	//node순회>
+	//parentNode, 
+	//firstChild, lastChild, 
+	//NextSibling,previousSibling
+	
+	//p1.previousSibling.previousSibling.innerText = "omg";
+	//previousSibling를 두번 써줘야하는 이유
+	//sibling은 그냥 앞에 있는 node이기 때문에 element와는 다름
+	//elemetn node, documenttype node, comment node, text node,> 등등을 모두 노드라고 함
+	//빈공백도 노드로 보기 때문에 두번 해줘야 div를 선택할 수 있음
+	//단 parentnode는 무조건 element임 빈공백을 노드로 치지 않음
+	//parentnode말고는 텍스트, 빈공백, 주석도 노드로 침
+	//그래서 혹시나 다른 것들을 쓸때는 조건검사를 해줘야함>너 element니?
+			
+	//<node type>
+	//element node = 1
+	//text node = 3
+	//crud = create, update, delete
+	
+	//first-child는 노드가 아니라 element에서 찾는다
+	
+	/*----------------------------------------------------------*/
+	
+	window.addEventListener("load", function(e) {
+
+		var srcText = document.querySelector("#src-text");
+		var changeButton = document.querySelector("#change-button");
+		var img1 = document.querySelector("#img1");
+		var borderText = document.querySelector("#border-text");
+		var borderColor = document.querySelector("#border-color");
+		var borderWidth = document.querySelector("#border-width");
+		var borderStyle = document.querySelector("#border-style");
+
+		changeButton.onclick = function() {
+			img1.src="images/"+srcText.value;		
+			img1.style.border=borderText.value;
+			img1.style.borderColor=borderColor.value;
+			img1.style.borderWidth=borderWidth.value;
+			img1.style.borderStyle=borderStyle.value;
+			//혹은 img1.style["borde-style"]=borderStyle.value;
+		};
+
+	});
+	
+	/*----------------------------------------------------------*/
+	
+	window.addEventListener("load", function(e) {
+
+		var addButton = document.querySelector("#add-button");
+		var container = document.querySelector("#container");
+		var delButton = document.querySelector("#del-button");
+		var cloneButton = document.querySelector("#clone-button");
+		var downButton = document.querySelector("#down-button");
+		
+		
+		addButton.onclick = function() {
+			//이미지 노드를 생성하기
+			var img = document.createElement("img");
+			
+			//이미지 속성/스타일 변경하기
+			img.src="images/egg.jpg";
+			img.style.width="30px";
+			img.style.height="30px";
+			
+			//이미지 노드를 document에 추가하기
+			container.appendChild(img);
+		};		
+		
+		delButton.onclick = function() {
+			var last = container.querySelector("img:last-child");
+			container.removeChild(last);
+		};
+		
+		cloneButton.onclick = function() {
+			var clone = container.cloneNode(true);
+			
+			container.parentNode.appendChild(clone);
+		};
+		
+		downButton.onclick = function() {
+			var parent = container.parentElement;
+			
+			var target = cursor.nextElementSibling;
+			
+			var old = parent.replaceChild(cursor,target);
+	   		parent.insertBefore(old,cursor);
+
+		};
+
+	});
+	
+	
+
+	
+</script>
+
+</head>
+<body>
+
+	
+	<input id="add-button" type="button" value="이미지 추가"/>
+	<input id="del-button" type="button" value="이미지 삭제"/>
+	<input id="clone-button" type="button" value="통째로 복제"/>
+	<input id="down-button" type="button" value="밑으로 내리기"/>
+	<div>
+		<div id="cursor">
+		바뀔놈
+		</div>
+		<div id="container">
+		</div>
+	</div>
+	<hr/>
+	images/<input id="src-text" value="1.jpg"/><br/>
+	경계선 : <input id="border-text" value="3px solid #979797"/><br/>
+	경계선 색 : <input id="border-color" value="#979797"/><br/>
+	경계선 두께 : <input id="border-width" value="3px"/><br/>
+	경계선 스타일 : <input id="border-style" value="solid"/><br/>
+    <input id="change-button" type="button" value="변경" />
+    <img id="img1" src="images/1.jpg" />
+	<hr/>
+	<input id="run-button" type="button" value="실행" />
+	<div>
+		<font>font</font> 
+		<input />
+	</div>
+	<form id="p1">
+			test1
+			<input /> 
+			<input />
+		</form>
+		test2
+	<p>
+		para
+	</p>
+	hello
+	<!-- 오마이 갓 뚜-->
+</body>
+</html>
+

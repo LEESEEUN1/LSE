@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link href="../css/customer/style.css" type="text/css" rel="stylesheet" />
+<script src="../js/customer/notice.js"></script>
+<script>
+	window.addEventListener("load",function(){
+		alert("hello");
+	});
+
+	/* var exam = new Object();
+	/* var exam={};
+	exam.kor=30;
+	alert(exam.kor); */
+	//객체생성을 먼저 하고 그 객체를 확장한다. =expand Object
+	
+	/* var exam={};
+	exam["kor a"]=30;
+	alert(exam["kor a"]); */
+	
+	//유효하지 않은 것은 ""으로 감싸주면 됨
+	/* var student={
+			name:"홍길동",
+			age:19,
+			"취미":["코딩","공부","수학"]
+	}
+	
+	alert(student["취미"][1]); */
+	
+	//alert(3+4.5); >7.5
+	//alert(3.5-"2"); >1.5 문자를 숫자로 바꿔서 계산함
+	//alert(5<3+4); >true
+	//alert("32">"4"); >false 문자를 비교할땐 앞글자만 따짐 (숫자로 바꾸는 것이 아니라 문자 그대로 비교)
+	//alert(32>"4"); >true -와 부등호를 쓰게 되면 문자는 숫자로 바뀜
+	
+	
+	
+	//var ar = ["철수","영희","맹구","동천"];
+	
+	/* 
+	for(var i=0;i<4;i++)
+		alert(ar[i]);
+	for(i in ar)
+		alert(ar[i]); 
+	전역변수로 쓰기 때문에 좋지 않음
+	그래서 아래와 같이 그 안에서 var i로 선언해주는 것이 좋음
+	*/
+	
+	/* for(var i in ar)
+		alert(i); */
+	//ar이 배열
+	//자바스크립트의 for in 문은 값이 아니라 인덱스를 뽑아냄
+	//자바에서는 값이 나왔음
+	
+	/* for(var i in ar)
+		alert(ar[i]); */
+	//이거하면 인덱스가 아니라 값이 나옴
+	
+	
+
+	/* var exam = {
+		kor:30,
+		eng:40,
+		math:50
+	}; */
+	
+	/* for(var i in exam)
+		alert(i); */
+	//각각의 키값(과목명)이 나옴 
+	/* for(var i in exam)
+		alert(exam[i]); */
+	//과목명의 값이 나옴 
+	
+	
+	
+	//var add = new Function("x,y","return x+y;");
+	//return x+y말고도 다른 문장이 올 수도 있기 때문에 ; 써줘야 함
+	//자바스크립트는 문장을 구분하기위해 내려쓰기 또는 세미콜론을 쓸 수 있음 > 세미콜론을 쓰자
+	/* var add = function(x,y){
+		return x+y;
+	}//위에 문장을 jason표기법으로 표현할 수 있음 */
+	
+	/* var add = function(){
+		var sum=0;
+		
+		for(var i in arguments)
+		sum+=arguments[i];
+		
+		return sum;
+	} */
+	
+	/* function add(x,y){
+		return x+y;
+	}//이것도 가능하지만 별로 좋은 방법이 아님 */
+	
+	//alert(add(3)); //결과값 NaN>
+	//alert(add(3-"a")); //결과값 NaN
+	//alert(add(3,4,5,6,7)); //결과값  7
+	//alert(add(3+undefined)); //결과값 NaN
+	
+	
+	//------------17.3.3-----------------------------
+	/* alert(a);
+	var a =1;//결과값 undefined */
+	
+	/* alert(a);
+	a=1;//에러
+	
+	a=1;
+	alert(a);//1출력 */
+	
+	//var라는 것은 실행되기 전 준비단계에서 스택에 올라감
+	/* alert(a);
+	var a=1; */
+	//이때 var가 스택에올라갔지만 초기값이 없어서 undefined됨
+	
+	/* var a=1;
+	var a=2;
+	alert(a);//같은 변수라서 에러가 나야하지만 나지 않음 */
+	
+	
+	/* {
+		var a=1;
+	}
+	alert(a);//원래는 지역변수 a이기 때문에 에러가 나야하지만 에러가 나지 않음  자바스크립트의 중괄호는 아무런 역할을 하지 않음*/
+	
+	/* alert(a);
+	{
+		var a=1;
+	}//undefined */
+	
+	
+	//중괄호가 지역을 나누지는 않지만 함수는 지역을 나눔
+	
+	/* function f1(){
+		a=1;
+	}
+	f1();
+	alert(a); */
+	
+	
+	/* function f1(){
+		var a=1;
+		return function f2(){
+			return a;
+		}
+	}
+	var f =f1();
+	var a =f();
+	alert(a); */
+	//함수가 끝나면 그 지역변수가 사라진다
+	//자바스크립트에서 f1()에서 var a=1은 숫자(값) 1이 아니라 1을 담고 있는 박스이다
+	//<closure>
+	/* function f1(){
+		var a=1;
+		return function f2(){
+			return a;
+		};
+	}
+	var f2=f1(); */
+	//f2의 함수가 f1을 물고 있기 때문에 f1은 끝날 수가 없음
+	//이때 f2가 클로져
+	//클로져가 무엇인가?
+
+	
+	
+	/* var x=3;
+	document.write(x); */
+	//window.document.write(x); window.은 생략 가능
+	
+	
+	/* var x, y;
+	x=prompt("x의 값을 입력하세요",0);
+	y=prompt("y의 값을 입력하세요",0);
+	alert(typeof x);
+	//x의 자료형이 무엇인지 알고 싶을 때 typeof라는 연산자 붙임
+	x=parseInt(x);
+	y=parseInt(y);
+	alert(typeof y);
+	alert(x+y);
+	//데이터 변환과 관련된 함수는 언어가 제공
+	//alert는 플랫폼이 제공하는 함수 */
+	
+	
+	
+	/* window.onload=function(){
+		var btnPrint = document.getElementById("btn-print");
+		btnPrint.onclick = printResult;
+		
+		function printResult(){
+			var x, y;
+			x=prompt("x의 값을 입력하세요",0);
+			y=prompt("y의 값을 입력하세요",0);
+			x=parseInt(x);
+			y=parseInt(y);
+			btnPrint.value=x+y;
+		}
+		
+		//이것을 아래에 쓰면 일렬로 내려써야 하기 때문에 스크립트 부분에 함수로 만들어놓고
+		//필요한 부분에 onclick="printResult();"를 호출함
+	}
+	//윈도우가 모두 로드 되었다면 실행할수 있게 된다 */
+	
+</script>
+</head>
+
+<body>
+<header id="header">
+		<div class="content-container">
+			<h1 id="logo">
+				<img src="../images/logo.png" />
+			</h1>
+
+			<section>
+				<h1 class="hidden">헤더</h1>
+
+				<nav id="main-menu" class="hr-menu">
+					<h1>
+						메인메뉴 <input type="button" value="클릭" id="btn-result">
+
+					</h1>
+					</h3>
+					<ul>
+						<li><a href="">학습가이드</a></li>
+						<li><a href="">뉴렉과정</a></li>
+						<li><a href="">강좌선택</a></li>
+					</ul>
+				</nav>
+
+				<div id="lectur-serch-form">
+					<h3 class="hidden">강좌검색폼</h3>
+					<form>
+						<fieldset>
+							<legend class="hidden">검색 필드</legend>
+							<label>과정검색</label> <input type="text" /> <input
+								class="lecture-search-botton" type="button" value="검색" />
+						</fieldset>
+
+
+					</form>
+				</div>
+
+				<nav id="account-menu" class="hr-menu">
+					<h1 class="hidden">
+						계정메뉴
+						</h3>
+						<ul>
+							<li class="first"><a href="../index.html">HOME</a></li>
+							<li><a href="../joinus/login.html">로그인</a></li>
+							<li><a href="../joinus/agree.html">회원가입</a></li>
+						</ul>
+				</nav>
+
+				<nav id="member-menu" class="hr-menu">
+					<h1 class="hidden">회원메뉴</h1>
+					<ul>
+						<li><a href="">마이페이지</a></li>
+						<li><a href="">고객센터</a></li>
+					</ul>
+
+				</nav>
+			</section>
+		</div>
+	</header>
+	<!-- ------------visual------------------------------------------------------------------- -->
+	<div id="visual">
+		<div class="content-container"></div>
+		<!--       visual      -->
+	</div>
+	</div>
+	<!-- ------------body------------------------------------------------------------------- -->
+	<div id="body">
+		<div class="content-container">
+			<aside id="aside">
+				<h1 class="aside-title aside-margin">고객센터</h1>
+
+				<nav class="aside-title aside-margin">
+					<h1 class="hidden">고객센터메뉴</h1>
+					<ul>
+						<li class="aside-menu-item">공지사항</li>
+						<li class="aside-menu-item">1:1고객문의</li>
+						<li class="aside-menu-item">학습안내</li>
+					</ul>
+				</nav>
+				<nav>
+					<h1 class="aside-title margin">추천사이트</h1>
+					<ul>
+						<li class="aside-menu-link"><a href=""><img alt="앤서이즈"
+								src="../images/answeris.png"></a></li>
+						<li class="aside-menu-link"><a href=""><img alt="W3C"
+								src="../images/w3c.png"></a></li>
+						<li class="aside-menu-link"><a href=""><img
+								alt="마이크로 소프트" src="../images/microsoft.png"></a></li>
+					</ul>
+				</nav>
+				<h3>구글광고</h3>
+				<li>유니티</li>
+			</aside>
+
+			<main id="main">
+			<div class="breadcrumb">
+				<h3 class="hidden">현재</h3>
+				<ul>
+					<li>home</li>
+					<li>고객센터</li>
+					<li>공지사항</li>
+				</ul>
+			</div>
+
+			<form>
+				<fieldset>
+					<legend class="hidden">검색필드</legend>
+					<label class="hidden">검색분류</label> <select>
+						<option>제목</option>
+						<option>내용</option>
+					</select> <label>검색어</label> <input type="text" placeholder="검색어를 입력하세요" />
+					<input class="btn btn-search" type="submit" value="검색" />
+				</fieldset>
+			</form>
+
+
+			<h2>검색</h2>
+
+			<div class="notice">
+				<h3>공지목록</h3>
+				<table class="table notice-table">
+					<thead>
+						<tr>
+							<td>번호</td>
+							<td>제목</td>
+							<td>작성자</td>
+							<td>작성일</td>
+							<td>조회수</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>44</td>
+							<td>서적과 사이트 개편에 대한 안내</td>
+							<td>admin</td>
+							<td>2016-09-21</td>
+							<td>776</td>
+						</tr>
+						<tr>
+							<td>43</td>
+							<td>리눅스 강의 7월 1일부터 업로드 할 예정입니다.</td>
+							<td>admin</td>
+							<td>2016-06-30</td>
+							<td>854</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</main>
+		</div>
+
+	</div>
+
+	<!-- ------------footer------------------------------------------------------------------- -->
+	<footer id="footer">
+		<div class="content-container">
+			<!-- <h2>회사정보</h2>
+      <div>Copyright ⓒ newlecture.com 2012-2014 All Right Reserved.
+         Contact admin@newlecture.com for more information</div> -->
+		</div>
+	</footer>
+	<!-- ---------header-------------------------------------------------------- -->
+<!-- 	<header id="header">
+		<div class = "content-container">
+			<h1 id="logo">
+				<img src="../images/logo.png"="뉴렉처온라인"/>
+			</h1>
+			
+			<section>
+				<h1 class="hidden">Header</h1>
+				
+				<nav id="main-menu"class="hr-menu">
+					<h1>메인메뉴
+						<input type="button" value="클릭"
+							id="btn-print"/>
+					</h1>
+					<ul>
+						<li><a herf="">학습가이드</a></li>
+						<li><a herf="">뉴렉과정</a></li>
+						<li><a herf="">강좌선택</a></li>
+					</ul>
+				</nav>
+				
+				<div id="lecture-search-form">
+					<h3 class="hidden">강좌검색폼</h3>
+						<form>
+							<fieldset>
+							<legend class="hidden">검색필드</legend>
+							<label>과정검색</label> <input type="text"/>
+							<input class="lecture-search-button" type="submit" value="검색"/>
+							</fieldset>
+						</form>
+				</div>
+				 
+				<nav id="account-menu"class="hr-menu">
+					<h1 class="hidden">계정메뉴</h1>
+					<ul>
+						<li class="first"><a href="../index.html">HOME</a></li>
+						<li><a href="../joinus/login.html">로그인</a> </li>
+						<li><a href="../joinus/agree.html">회원가입</a></li>
+					</ul>
+				</nav>
+				
+				<nav id="member-menu"class="hr-menu">
+					<h1 class="hidden">회원메뉴</h1>
+					<ul>
+						<li class="first">>마이페이지</li>
+						<li><a href="">고객센터</a></li>
+					</ul>
+				</nav>
+				
+			</section>
+		</div>
+	</header>
+
+	-------visual-----------------------------------------------------------
+	<div id="visual">
+		<div class = "content-container">
+		visual
+		</div>
+	</div>
+
+	-------body------------------------------------------------------------
+	<div id="body">
+		<div class = "content-container clearfix">
+		
+			<aside id="aside">
+			
+				<h1 class="aside-title aside-main">고객센터</h1>
+		
+				<nav>
+					<h1 class="hidden">고객센터메뉴</h1>
+					<ul>
+						<li class="aside-menu-item"><a class = "aside-menu-item-link" herf="">공지사항</a></li>
+						<li class ="aside-menu-item"><a class = "aside-menu-item-link" herf="">1:1고객문의</a></li>
+						<li class ="aside-menu-item"><a class = "aside-menu-item-link" herf="">학습안내</a></li>
+					</ul>
+				</nav>
+			
+				<nav>
+					<h1 class="aside-title margin">추천사이트</h1>
+					<ul class="margin">
+						<li><a herf=""><img src="../images/answeris.png" alt="앤서이즈"/></a></li>
+						<li><a herf=""><img src="../images/w3c.png" alt="W3C"/></a></li>
+						<li><a herf=""><img src="../images/microsoft.png" alt="마이크로소프트"/></a></li>
+					</ul>
+				</nav>
+			</aside>
+	
+			<main id="main">
+			
+				<h2 class="main-title">공지사항</h2>
+				
+				<div class="breadcrumb">
+					<h3 class="hidden">현재경로</h3>
+					<ul>
+						<li>home</li>
+						<li>고객센터</li>
+						<li>공지사항</li>
+					</ul>
+				</div>
+					
+			 <form class="main-margin">
+	             <fieldset>
+	                <legend class="hidden">검색필드</legend>
+	                <label class="hidden">검색분류</label>
+	                <select>                                          
+	                   <option>제목</option>
+	                   <option>내용</option>                     
+	                </select>
+	                <label class="hidden">검색어</label>
+	                <input type="text" placeholder="검색어를 입력하세요"/>
+	                <input class="btn btn-search" type="submit" value="검색" />
+	             </fieldset>               
+	          </form>
+          
+	          <div class="notice">
+				<h3 class="hidden margin">공지목록</h3>
+					<table class="table notice-table">
+						<thead>
+							<tr>
+								<td>번호</td>
+								<td>제목</td>
+								<td>작성자</td>
+								<td>작성일</td>
+								<td>조회수</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>44 </td>
+								<td>서적과 사이트 개편에 대한 안내 </td>
+								<td>admin</td>
+								<td>2016-09-21 </td>
+								<td>776 </td>
+							</tr>
+							<tr>
+								<td>43</td>
+								<td>리눅스 강의 7월 1일부터 업로드 할 예정입니다.</td>
+								<td>admin</td>
+								<td>2016-06-30</td>
+								<td>854</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			
+				<div class="margin">1/3 pages</div>
+				<div>이전 1 2 3 다음</div> 
+			</main>
+			
+		</div>
+	</div>
+
+	-------footer-----------------------------------------------------------
+	<footer id="footer">
+		<div class = "content-container">
+		<h2>회사정보</h2>
+	
+		<div>주소서울특별시 마포구 토정로35길 11, 인우빌딩 5층 266호관리자메일admin@newlecture.com사업자 등록번호132-18-46763 통신 판매업 신고제 2013-서울강동-0969 호 상호뉴렉처대표박용우전화번호070-4206-4084 [죄송합니다. 당분간 문의내용은 고개센터 메뉴에서 1:1 문의를 이용해주시기 바랍니다]</div>
+		<div>Copyright ⓒ newlecture.com 2012-2014 All Right Reserved. Contact admin@newlecture.com for more information</div>
+		</div>
+	</footer> -->
+	
+	
+	<!--보통 이부분에 스크립트코드가 들어감 -->
+	
+
+</body>
+</html>
+
